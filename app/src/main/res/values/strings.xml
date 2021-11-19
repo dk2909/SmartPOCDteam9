@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Camera Demo</string>
+    <string name="take_picture">Take picture</string>
+    <string name="gallery">Gallery</string>
+    <string name="title_activity_gallery">My Gallery</string>
+    <string name="zoom_step">Zoom step</string>
+    <string name="exposure_time">Exposure time</string>
+    <string name="zoom_step_label">Zoom step:</string>
+    <string name="ok">OK</string>
+</resources>
