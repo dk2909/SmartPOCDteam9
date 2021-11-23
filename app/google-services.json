@@ -1,91 +1,33 @@
 {
   "project_info": {
-    "project_number": "811568862204",
-    "project_id": "smartpocd",
-    "storage_bucket": "smartpocd.appspot.com"
+    "project_number": "375798414304",
+    "project_id": "cancerdetection-torchserve",
+    "storage_bucket": "cancerdetection-torchserve.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:811568862204:android:d17d00217f7c9bc4a0d879",
-        "android_client_info": {
-          "package_name": "com.example.smartpocd"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "811568862204-9esujd92627cj21kfqvr8vaj86ebjqi3.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBMj4RxOA_Tl5EIFNkx-dLYx8Qx-X7a2Qk"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "811568862204-9esujd92627cj21kfqvr8vaj86ebjqi3.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:811568862204:android:895830aad42bc0cca0d879",
+        "mobilesdk_app_id": "1:375798414304:android:fcd01edb2e4664e9a24985",
         "android_client_info": {
           "package_name": "com.team9.smartpocd"
         }
       },
       "oauth_client": [
         {
-          "client_id": "811568862204-9esujd92627cj21kfqvr8vaj86ebjqi3.apps.googleusercontent.com",
+          "client_id": "375798414304-85eoeu4elcm65q5fmbrb4jj35h20pnt7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBMj4RxOA_Tl5EIFNkx-dLYx8Qx-X7a2Qk"
+          "current_key": "AIzaSyC1iwNIWwW2lH4blo0s4E7zqXZlGowX2PQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "811568862204-9esujd92627cj21kfqvr8vaj86ebjqi3.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:811568862204:android:d4939dff166d3413a0d879",
-        "android_client_info": {
-          "package_name": "com.ujit.camerademo"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "811568862204-9esujd92627cj21kfqvr8vaj86ebjqi3.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBMj4RxOA_Tl5EIFNkx-dLYx8Qx-X7a2Qk"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "811568862204-9esujd92627cj21kfqvr8vaj86ebjqi3.apps.googleusercontent.com",
+              "client_id": "375798414304-85eoeu4elcm65q5fmbrb4jj35h20pnt7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
