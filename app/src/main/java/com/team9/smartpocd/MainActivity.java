@@ -61,10 +61,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ZoomControls;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.ByteBuffer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -73,6 +78,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
+
+// for ML Model
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
 
 /**
  * MainActivity Class
@@ -675,6 +685,11 @@ public class MainActivity extends AppCompatActivity
                     Uri file = Uri.fromFile(new File(imageFile.getAbsolutePath()));
                     StorageReference riversRef = storageReference.child(file.getLastPathSegment());
                     uploadTask = riversRef.putFile(file);
+                    try {
+                        sendToMLmodel();
+                    } catch (Exception e){
+
+                    }
                     createCameraPreview();
                 }
             };
@@ -742,5 +757,44 @@ public class MainActivity extends AppCompatActivity
         // Create a image file name
         @SuppressLint("SimpleDateFormat") String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         return new File(mediaStorageDir.getPath() + File.separator + "IMG_"+ timeStamp + ".png");
+    }
+
+    private void sendToMLmodel() throws Exception{
+        // setup request
+        HttpURLConnection torchServeHttpConnection = null;
+        URL torchServeURL = new URL("http://34.71.197.154:8080/predictions/fastunet/");
+        torchServeHttpConnection = (HttpURLConnection)torchServeURL.openConnection();
+
+        torchServeHttpConnection.setRequestMethod("POST");
+        torchServeHttpConnection.setRequestProperty("Content-Type", "image/png");
+        torchServeHttpConnection.setDoOutput(true);
+        torchServeHttpConnection.setDoInput(true);
+        torchServeHttpConnection.setAllowUserInteraction(true);
+
+        torchServeHttpConnection.connect();
+
+        FileOutputStream fos = new FileOutputStream(imageFile);
+        //OutputStreamWriter osw = new OutputStreamWriter(torchServeHttpConnection.getOutputStream());
+
+
+    /*
+        // example of notation: /storage/emulated/0/Pictures/MyPictures/imageName.png
+      // try  "\"/storage/emulated/0/Pictures/MyPictures/imageName.png\""
+        String imagePath = "\"@" + imageFile.getPath().toString() + "\"";
+        String[] commands = new String[] {"curl", "-X", "POST", "-H", "\"Content-Type: image/png\"",
+                "--data-binary",
+                imagePath,
+                "http://34.71.197.154:8080/predictions/fastunet/"};
+        Process process = Runtime.getRuntime().exec(commands);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        String line;
+        String response = "";
+        while ((line = reader.readLine()) != null) {
+            response += line;
+        }
+        System.out.println(response);
+        Boast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
+        */
+
     }
 }

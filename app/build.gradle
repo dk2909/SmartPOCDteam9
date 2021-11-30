@@ -46,4 +46,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     // Firebase
     implementation 'com.google.firebase:firebase-storage:19.2.2'
+    api 'com.github.ok2c.hc5.android:httpclient-android:0.1.1'
 }
