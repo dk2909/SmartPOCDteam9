@@ -54,6 +54,7 @@ import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Switch;
@@ -83,6 +84,13 @@ import java.util.TreeSet;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 
 /**
  * MainActivity Class
@@ -685,11 +693,9 @@ public class MainActivity extends AppCompatActivity
                     Uri file = Uri.fromFile(new File(imageFile.getAbsolutePath()));
                     StorageReference riversRef = storageReference.child(file.getLastPathSegment());
                     uploadTask = riversRef.putFile(file);
-                    try {
-                        sendToMLmodel();
-                    } catch (Exception e){
 
-                    }
+                    sendToMLmodel();
+
                     createCameraPreview();
                 }
             };
@@ -759,8 +765,40 @@ public class MainActivity extends AppCompatActivity
         return new File(mediaStorageDir.getPath() + File.separator + "IMG_"+ timeStamp + ".png");
     }
 
-    private void sendToMLmodel() throws Exception{
-        // setup request
+    private void sendToMLmodel(){
+        String file_path = imageFile.getAbsolutePath();
+        OkHttpClient client = new OkHttpClient();
+        // get content type
+        String extension = MimeTypeMap.getFileExtensionFromUrl(imageFile.getPath());
+        String content_type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension); // should be "image/png"
+        // create post request
+        //RequestBody file_body = RequestBody.create(imageFile, MediaType.parse(content_type));
+        RequestBody file_body = RequestBody.create(imageFile, MediaType.parse(content_type));
+        RequestBody request_body = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("type", content_type)
+                .addFormDataPart("uploaded_image", file_path.substring(file_path.lastIndexOf("/")+1), file_body)
+                .build();
+        Request request = new Request.Builder()
+                .url("http://34.71.197.154:8080/predictions/fastunet/")
+                .post(request_body)
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+            if(!response.isSuccessful()){
+                throw new IOException("Error : "+response);
+            } else {
+                //Boast.makeText(MainActivity.this, response.body().string(), Toast.LENGTH_SHORT).show();
+                String responseText = response.body().string();
+                System.out.println(responseText);
+            }
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+       /* // setup request
         HttpURLConnection torchServeHttpConnection = null;
         URL torchServeURL = new URL("http://34.71.197.154:8080/predictions/fastunet/");
         torchServeHttpConnection = (HttpURLConnection)torchServeURL.openConnection();
@@ -775,7 +813,7 @@ public class MainActivity extends AppCompatActivity
 
         FileOutputStream fos = new FileOutputStream(imageFile);
         //OutputStreamWriter osw = new OutputStreamWriter(torchServeHttpConnection.getOutputStream());
-
+*/
 
     /*
         // example of notation: /storage/emulated/0/Pictures/MyPictures/imageName.png

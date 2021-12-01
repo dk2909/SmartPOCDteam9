@@ -31,7 +31,12 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-
+/*
+repositories {
+    maven{
+        url "https://dl.bintray.com/lukaville/maven"
+    }
+}*/
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -46,5 +51,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     // Firebase
     implementation 'com.google.firebase:firebase-storage:19.2.2'
-    api 'com.github.ok2c.hc5.android:httpclient-android:0.1.1'
+    // for uploading image
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    //implementation 'com.nbsp:library:1.09'
 }
