@@ -522,7 +522,7 @@ public class MainActivity extends AppCompatActivity
             captureBuilder.set(CaptureRequest.SCALER_CROP_REGION, cameraZoom.getCropRect());
             // For long exposure time
             captureBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_OFF); // For long exposure time, this is needed to disabled the default value
-            captureBuilder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, (long) 1e9 / 5);
+            captureBuilder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, (long) 1e9 / 25);
 
             // Orientation
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
