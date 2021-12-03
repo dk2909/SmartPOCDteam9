@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
     android:id="@+id/activity_mainprev"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainprev"
-    android:background="@drawable/main_background"
-    >
+    tools:context=".mainprev">
 
     <TextView
         android:id="@+id/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
+        android:layout_marginStart="61dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="61dp"
         android:text="Smart Phone Point of Care"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:visibility="invisible" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/ip_button"
@@ -37,5 +34,4 @@
         android:layout_marginTop="200dp"
 
         android:text="Diagnostics Reports" />
-
 </RelativeLayout>
