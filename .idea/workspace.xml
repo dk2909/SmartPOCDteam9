@@ -2,16 +2,34 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config />
+      <config>
+        <device id="Nexus 6P" />
+        <device id="pixel" />
+        <device id="pixel_3a" />
+        <device id="Nexus 9" />
+        <device id="Nexus 7" />
+        <device id="pixel_4a" />
+        <device id="pixel_4" />
+        <device id="pixel_xl" />
+        <device id="pixel_3" />
+        <device id="Nexus 5X" />
+      </config>
     </shared>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8d99a79-f6e8-4620-aa53-aa3da3a00d29" name="Default Changelist" comment="Updated package name">
+    <list default="true" id="d8d99a79-f6e8-4620-aa53-aa3da3a00d29" name="Default Changelist" comment="Initial Branch Upload.">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/else_background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/main_background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/My_Application.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/My_Application.app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_diagnostics_report.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_diagnostics_report.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_image_process.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_image_process.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_mainprev.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_mainprev.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_sampling_tutorial.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sampling_tutorial.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,10 +61,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="memory.settings.postsync.last.time.stamp" value="1638480684922" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/gradle" />
     </key>
@@ -120,6 +144,14 @@
       <option name="presentableId" value="Default" />
       <updated>1637279125077</updated>
     </task>
+    <task id="LOCAL-00001" summary="Initial Branch Upload.">
+      <created>1638480941499</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1638480941499</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -136,6 +168,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated package name" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated package name" />
+    <MESSAGE value="Initial Branch Upload." />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial Branch Upload." />
   </component>
 </project>
