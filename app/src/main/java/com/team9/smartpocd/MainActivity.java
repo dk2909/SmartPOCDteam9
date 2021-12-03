@@ -386,7 +386,7 @@ public class MainActivity extends AppCompatActivity
                     }
 
 
-            imageDimension = new Size(imageSizes.last().getWidth(), imageSizes.last().getHeight());
+            imageDimension = new Size((imageSizes.last().getWidth())/2, (imageSizes.last().getHeight())/2);
 
             // Add permission for camera and let user grant the permission
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -500,8 +500,8 @@ public class MainActivity extends AppCompatActivity
 
             ImageReader reader;
             // The largest image size for high quality
-            int width = imageSizes.last().getWidth();
-            int height = imageSizes.last().getHeight();
+            int width = (imageSizes.last().getWidth())/2;
+            int height = (imageSizes.last().getHeight())/2;
             reader = ImageReader.newInstance(width, height, ImageFormat.YUV_420_888, 2);
 
 
@@ -522,7 +522,7 @@ public class MainActivity extends AppCompatActivity
             captureBuilder.set(CaptureRequest.SCALER_CROP_REGION, cameraZoom.getCropRect());
             // For long exposure time
             captureBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_OFF); // For long exposure time, this is needed to disabled the default value
-            captureBuilder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, (long) 1e9 / 5);
+            captureBuilder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, (long) 1e9 / 25);
 
             // Orientation
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
