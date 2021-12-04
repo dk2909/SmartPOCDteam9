@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/else_background"
+    >
+
     <Button
         android:id="@+id/tutorial"
         android:layout_width="wrap_content"
@@ -21,10 +24,11 @@
         android:id="@+id/image_proc_title"
         android:layout_width="208dp"
         android:layout_height="46dp"
-        android:layout_marginStart="112dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="31dp"
 
         android:text="Image Processing"
+        android:textColor="#24D62C"
         android:textSize="24sp"
         android:textStyle="bold" />
 

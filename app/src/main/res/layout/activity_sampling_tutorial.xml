@@ -4,16 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sampling_tutorial">
+    tools:context=".sampling_tutorial"
+    android:background="@drawable/else_background"
+    >
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="52dp"
 
         android:text="Sampling Tutorial"
+        android:textColor="#24D62C"
         android:textSize="24sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:text="Ensure you are in a well lit room before beginning. \nAttach lens. \nPlace tissue sample in substrate. \nOpen Smart Phone POCD Application. \nNavigate from Main menu >> Image Processing >> Camera Function.\nTake photo of sample.\n Navigate from Main menu >> Diagnostics Report to view results. "
+        android:textColor="#FBFAFA"
+        android:textSize="16sp" />
 </RelativeLayout>
