@@ -2,8 +2,12 @@ package com.team9.smartpocd;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import static android.os.Environment.DIRECTORY_DOWNLOADS;
@@ -17,11 +21,19 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Diagnostics_Report extends AppCompatActivity {
 
@@ -40,14 +52,21 @@ public class Diagnostics_Report extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnostics_report);
-        EditText tde = (EditText)findViewById(R.id.editTextTextPersonName);
-        tde.setText("test5");
-
 
         download();
 
+        EditText tde = (EditText)findViewById(R.id.editTextTextPersonName);
+        try {
+            String responseJson = readJSONfile();
+            tde.setText(responseJson);
+            //Boast.makeText(Diagnostics_Report.this, "Result: " + responseJson, Toast.LENGTH_SHORT).show();
+            System.out.println(responseJson);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
+
 
     // get handle on server storage
     // storage = FirebaseStorage.getInstance();
@@ -78,7 +97,27 @@ public class Diagnostics_Report extends AppCompatActivity {
         DownloadManager.Request request = new DownloadManager.Request(uri);
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setDestinationInExternalFilesDir(context, destinationDirectory, fileName + fileExtension);
+
+
+        System.out.println("Path: " + destinationDirectory );
+
         downloadManager.enqueue(request);
     }
+
+    public String readJSONfile() throws IOException {
+
+        Context context = Diagnostics_Report.this;
+        File jsonFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "IMG_20211203_170516.json");
+
+        FileReader jsonFileReader = new FileReader(jsonFile);
+        BufferedReader bufferedReader = new BufferedReader(jsonFileReader);
+        StringBuilder stringBuilder = new StringBuilder();
+        String line = bufferedReader.readLine();
+        stringBuilder.append(line);
+        String jsonContent = stringBuilder.toString();
+
+        return  jsonContent;
+    }
+
 }
 
