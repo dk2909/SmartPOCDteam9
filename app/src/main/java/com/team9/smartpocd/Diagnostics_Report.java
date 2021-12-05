@@ -1,8 +1,11 @@
 package com.team9.smartpocd;
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -37,7 +40,7 @@ import java.io.IOException;
 
 public class Diagnostics_Report extends AppCompatActivity {
 
-    //TextView resultTextView = (resultTextView);
+
 
     // Firebase server object
     private FirebaseStorage storage;
@@ -48,39 +51,78 @@ public class Diagnostics_Report extends AppCompatActivity {
     // reference directly to file on server
     StorageReference ref;
 
+    //TextView diagnosticsTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnostics_report);
+        System.out.println("Diagnostics Report called");
 
-        download();
+        // get name of most recent image
+        final Singleton singleton = (Singleton)getApplicationContext();
+        final String fileName = singleton.getData();
+        System.out.println(fileName);
 
+        // download image
+        download(fileName);
+
+        // read file and print result
         EditText tde = (EditText)findViewById(R.id.editTextTextPersonName);
+        String responseJson = "";
         try {
-            String responseJson = readJSONfile();
-            tde.setText(responseJson);
+            responseJson = readJSONfile(fileName);
+            if(responseJson.contains("iat")){
+                tde.setText("Tumor present");
+            } else if (responseJson.contains("nat")){
+                tde.setText("No tumor present");
+            }
+            //tde.setText(responseJson);
             //Boast.makeText(Diagnostics_Report.this, "Result: " + responseJson, Toast.LENGTH_SHORT).show();
             System.out.println(responseJson);
+
+            //diagnosticsTextView = (TextView)findViewById(R.id.textView5);
+            //diagnosticsTextView.setText(responseJson);
+            //print_result(responseJson);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+
+/*
+        try {
+            TextView diagnosticsTextView = (TextView)findViewById(R.id.textView5);
+            diagnosticsTextView.setText(responseJson);
+        } catch (NullPointerException e){
+            responseJson = "Error occured while reading the result.";
+        }
+    */
+
     }
+
+  /*  public void print_result(String result){
+        final TextView textView = new TextView(this);
+        textView.setText("This is a test");
+        textView.setTextColor(Color.WHITE);
+        textView.setTextSize(20);
+
+    }*/
 
 
     // get handle on server storage
     // storage = FirebaseStorage.getInstance();
     // storageReference = storage.getReference();
-    public void download() {
+    public void download(String fileName) {
         storageReference = storage.getInstance().getReference();
         // reference directly to file on server
-        ref = storageReference.child("responses/IMG_20211203_170516.json");
+        ref = storageReference.child("responses/" + fileName);
         // static URL needed if using DownloadManager
         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 String url = uri.toString();
-                downloadFile(Diagnostics_Report.this, "IMG_20211203_170516", ".json", DIRECTORY_DOWNLOADS, url);
+                downloadFile(Diagnostics_Report.this, fileName.substring(0, fileName.length()-5), ".json", DIRECTORY_DOWNLOADS, url);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -104,10 +146,10 @@ public class Diagnostics_Report extends AppCompatActivity {
         downloadManager.enqueue(request);
     }
 
-    public String readJSONfile() throws IOException {
+    public String readJSONfile(String fileName) throws IOException {
 
         Context context = Diagnostics_Report.this;
-        File jsonFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "IMG_20211203_170516.json");
+        File jsonFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName);
 
         FileReader jsonFileReader = new FileReader(jsonFile);
         BufferedReader bufferedReader = new BufferedReader(jsonFileReader);
