@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,19 +20,24 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
+    <TextView
+        android:id="@+id/resultText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="225dp"
+        android:text="Click Button to select file from Internal storage:\n\nAA_SMARTPOCD_RESULTS"
+        android:textColor="#F44336"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-        android:layout_marginTop="200dp"
-        android:ems="16"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:textColor="#F5F5F5" />
-
+    <Button
+        android:id="@+id/pick_result_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="150dp"
+        android:text="Pick a Report" />
 
 
 </RelativeLayout>

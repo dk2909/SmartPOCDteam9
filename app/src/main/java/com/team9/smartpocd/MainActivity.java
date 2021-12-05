@@ -752,11 +752,8 @@ public class MainActivity extends AppCompatActivity
         String imageFileName = imageFile.getName();
         System.out.println("Check file name " + imageFileName);
         String jsonFileName = imageFileName.replaceAll("png", "json");
-        //Intent fileNameIntent = new Intent(this, Diagnostics_Report.class);
-        //fileNameIntent.putExtra("file name", imageFileName);
         final Singleton fileNameClass = (Singleton) getApplicationContext();
         fileNameClass.setData(jsonFileName);
-
 
     }
 }
