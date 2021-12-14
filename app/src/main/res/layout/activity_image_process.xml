@@ -12,6 +12,7 @@
         android:layout_marginStart="110dp"
         android:layout_marginTop="100dp"
         android:text="Sampling Tutorial" />
+
     <Button
         android:id="@+id/camera_dummy_button"
         android:layout_width="wrap_content"

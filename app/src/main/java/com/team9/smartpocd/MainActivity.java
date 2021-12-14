@@ -74,6 +74,8 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import androidx.annotation.RequiresApi;
+
 /**
  * MainActivity Class
  */
@@ -675,6 +677,7 @@ public class MainActivity extends AppCompatActivity
                     Uri file = Uri.fromFile(new File(imageFile.getAbsolutePath()));
                     StorageReference riversRef = storageReference.child(file.getLastPathSegment());
                     uploadTask = riversRef.putFile(file);
+                    get_response_name(); // store image file name for response
                     createCameraPreview();
                 }
             };
@@ -741,6 +744,16 @@ public class MainActivity extends AppCompatActivity
         }
         // Create a image file name
         @SuppressLint("SimpleDateFormat") String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+
         return new File(mediaStorageDir.getPath() + File.separator + "IMG_"+ timeStamp + ".png");
+    }
+
+    public void get_response_name(){
+        String imageFileName = imageFile.getName();
+        System.out.println("Check file name " + imageFileName);
+        String jsonFileName = imageFileName.replaceAll("png", "json");
+        final Singleton fileNameClass = (Singleton) getApplicationContext();
+        fileNameClass.setData(jsonFileName);
+
     }
 }
